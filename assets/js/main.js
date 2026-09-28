@@ -10,6 +10,13 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  var printButton = document.getElementById("printCv");
+  if (printButton) {
+    printButton.addEventListener("click", function () {
+      window.print();
+    });
+  }
+
   // Mobile nav toggle
   var toggle = document.getElementById("navToggle");
   var nav = document.getElementById("primaryNav");
