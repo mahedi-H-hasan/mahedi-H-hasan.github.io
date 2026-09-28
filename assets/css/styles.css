@@ -472,6 +472,18 @@ p { margin: 0 0 1em; }
 }
 .eq-sign { color: var(--ink-muted); font-family: var(--font-mono); font-size: 1.1rem; }
 
+/* ---------- Research ---------- */
+.research h3 {
+  font-size: 1.05rem;
+  margin-top: 2.25rem;
+  color: var(--chalk);
+}
+.research h3:first-of-type { margin-top: 0; }
+.pub-list { list-style: none; counter-reset: none; }
+.pub-list li { align-items: flex-start; }
+.pub-list em { font-style: italic; color: var(--chalk-dim); }
+.pub-list a { word-break: break-word; }
+
 /* ---------- Contact ---------- */
 .contact-grid {
   display: grid;
