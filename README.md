@@ -22,6 +22,7 @@ projects.html           Selected public GitHub repositories
 skills.html             Programming, ML, web, and tooling skills
 cv.html                 Academic CV; print or save as PDF from the browser
 contact.html            Email, phone, and academic profile links
+publishing.html         How to preview a topic branch and manually deploy it via Actions
 assets/css/styles.css   All styles (design tokens as CSS custom properties at the top)
 assets/js/main.js       Mobile nav toggle, current-page highlighting, scroll-reveal, footer year
 assets/img/favicon.svg  Site icon
@@ -55,6 +56,25 @@ browser print dialog to download a portable copy.
 3. Every push to `main` runs `.github/workflows/deploy-pages.yml`, which
    builds nothing (there's nothing to build) and deploys the repo root
    straight to Pages.
+
+### Deploying a different branch manually
+
+Sometimes you want to test a change on a topic branch and deploy it on
+demand, without merging to `main` first. The same workflow supports this
+via its `workflow_dispatch` trigger — see **`publishing.html`** on the live
+site for the full walkthrough (branching, local preview caveats, and the
+exact Actions steps). In short:
+
+1. Branch from an up-to-date `main` so the branch has the workflow file.
+2. Push it, then in GitHub go to **Actions → Deploy to GitHub Pages → Run
+   workflow**, pick the branch under **Use workflow from**, and type that
+   same branch name into the confirmation field the workflow asks for.
+3. This deploys straight to the live public Pages URL — it is **not** a
+   private preview, and it can overwrite whatever `main` last published.
+4. To restore production, run the workflow again with **Use workflow
+   from** set to `main` (confirmation: `main`).
+
+No change to **Settings → Pages** is needed for any of this.
 
 ## Customization points
 
@@ -93,12 +113,15 @@ page. Search for `CUSTOMIZE` comments in each file for exact spots. By page:
 - **`contact.html`** — email, phone, GitHub, LinkedIn, ORCID, Scholar,
   website, and location are all sourced from the author's CV/public
   profile. Update `.contact-list` rows directly.
+- **`publishing.html`** — walkthrough for branching, local preview, and
+  manually deploying a non-`main` branch through the Pages workflow. Update
+  it if the workflow's manual-dispatch steps or inputs change.
 - **Avatar** — currently references the live GitHub avatar URL
   (`avatars.githubusercontent.com/u/186854641`). Replace with a local file
   in `assets/img/` if you'd rather not depend on that URL.
 - **Navigation** — every page repeats the same `<nav class="primary-nav">`
   markup with a `data-page` attribute per link. If you add a new page,
-  add a matching link (with `data-page`) to the nav in **all eight**
+  add a matching link (with `data-page`) to the nav in **all nine**
   existing files, and set `<body data-page="...">` on the new page so
   `assets/js/main.js` highlights it as current.
 
