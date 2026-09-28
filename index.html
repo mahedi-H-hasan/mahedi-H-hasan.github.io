@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  DIRECTION CONTRACT (Impeccable new-work)
+  THESIS: A portfolio as a living lecture — blackboard and graph-paper meet a
+    developer's terminal, refusing the generic dark-glass "resume" template.
+  OWN-WORLD: Deep chalkboard green ground, warm chalk-yellow single accent,
+    faint graph-paper grid, hand-drawn chalk underline on the name, index-card
+    project tiles pinned at gentle angles, Space Grotesk display + IBM Plex
+    Mono labels/tags.
+  STORY: Visitor reads the name hand-underlined like chalk, learns in one
+    line that Mahedi teaches CS and builds software, scans four real GitHub
+    projects as pinned index cards, sees the skill "equation," and finds a
+    direct way to email or visit the GitHub profile.
+  FIRST VIEWPORT: Full-bleed chalkboard hero, low-opacity grid overlay, large
+    Space Grotesk name with animated chalk-underline SVG, mono role line,
+    two chalk-outlined buttons (View Projects / Say Hello), scroll cue.
+  FORM: Single-page scrolling portfolio, sticky minimal mono nav; direction
+    authored directly (session unattended, user authorized autonomous work
+    after one confirmation attempt) rather than via the interactive
+    concept-seed/decision-page roll.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahedi Hasan — Software Developer & CS Educator</title>
+<meta name="description" content="Portfolio of Mahedi Hasan — Lecturer in Computer Science &amp; Engineering at IUBAT, CUET graduate, and software developer based in Dhaka, Bangladesh.">
+<meta name="theme-color" content="#16302a">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mahedi Hasan — Software Developer & CS Educator">
+<meta property="og:description" content="Portfolio of Mahedi Hasan — Lecturer in Computer Science &amp; Engineering at IUBAT, CUET graduate, and software developer based in Dhaka, Bangladesh.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/186854641?v=4">
+<meta property="og:url" content="https://mahedi-H-hasan.github.io/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://mahedi-H-hasan.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Mahedi Hasan — home">MH</a>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="hero-eyebrowless-meta mono">Dhaka, Bangladesh</p>
+
+      <h1 id="hero-heading" class="hero-name">
+        Mahedi Hasan
+        <svg class="chalk-underline" viewBox="0 0 620 30" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path d="M6 20 C 120 6, 260 28, 340 14 S 520 4, 612 18" />
+        </svg>
+      </h1>
+
+      <!-- CUSTOMIZE: role/positioning below is an editable assumption made while the
+           product owner was unavailable — see PRODUCT.md "Positioning" for context.
+           Public source facts (lecturer at IUBAT, CUET graduate, Dhaka) come from
+           https://github.com/mahedi-H-hasan (fetched via GitHub API). -->
+      <p class="hero-role mono">Software Developer &amp; Computer Science Educator</p>
+      <p class="hero-sub">
+        Lecturer, CSE @ IUBAT — International University of Business Agriculture and Technology
+        &nbsp;·&nbsp; CUET Graduate
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="#contact">Say Hello</a>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#about" aria-label="Scroll to About section">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about" aria-labelledby="about-heading">
+    <div class="wrap about-grid">
+      <div class="about-portrait">
+        <img
+          src="https://avatars.githubusercontent.com/u/186854641?v=4"
+          alt="Mahedi Hasan's GitHub profile photo"
+          width="240" height="240"
+          loading="lazy" decoding="async">
+      </div>
+
+      <div class="about-card card-index" data-tilt="-1">
+        <h2 id="about-heading">About</h2>
+        <p>
+          I teach Computer Science &amp; Engineering at IUBAT (International University of
+          Business Agriculture and Technology) and graduated in CSE from CUET
+          (Chittagong University of Engineering &amp; Technology).
+        </p>
+        <!-- CUSTOMIZE: replace this paragraph with your own voice — teaching philosophy,
+             research interests, the kind of software you like to build, or anything else
+             you want visitors to know. Nothing beyond public GitHub profile facts was
+             assumed above. -->
+        <p class="placeholder-copy">
+          Add 2–3 sentences here about what you focus on as an educator and developer —
+          your teaching philosophy, favourite subjects to teach, or the kind of problems
+          you enjoy solving in code.
+        </p>
+        <ul class="about-facts mono">
+          <li><span>Base</span> Dhaka, Bangladesh</li>
+          <li><span>Focus</span> Computer Science Education &amp; Software Development</li>
+          <li><span>Grad</span> CUET, CSE</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section projects" id="projects" aria-labelledby="projects-heading">
+    <div class="wrap">
+      <h2 id="projects-heading">Selected Projects</h2>
+      <p class="section-lede">
+        Public repositories from
+        <a href="https://github.com/mahedi-H-hasan?tab=repositories">github.com/mahedi-H-hasan</a>.
+        GitHub has no description on file for these yet, so each card below carries an
+        editable placeholder — replace the italic line with a real one‑liner.
+      </p>
+
+      <ul class="card-index-grid" role="list">
+
+        <li class="card-index project-card" data-tilt="-1.5">
+          <p class="card-pin" aria-hidden="true"></p>
+          <h3><a href="https://github.com/mahedi-H-hasan/EDUBD">EDUBD</a></h3>
+          <p class="placeholder-copy">
+            <!-- CUSTOMIZE: add a real one-line description of what EDUBD does. -->
+            Add a short description of what EDUBD does and the problem it solves.
+          </p>
+          <ul class="tag-row mono" aria-label="Technologies">
+            <li>TypeScript</li><li>Next.js</li><li>JavaScript</li><li>CSS</li>
+          </ul>
+          <a class="card-link mono" href="https://github.com/mahedi-H-hasan/EDUBD">View on GitHub →</a>
+        </li>
+
+        <li class="card-index project-card" data-tilt="1">
+          <p class="card-pin" aria-hidden="true"></p>
+          <h3><a href="https://github.com/mahedi-H-hasan/HFD-FULL">HFD-FULL</a></h3>
+          <p class="placeholder-copy">
+            <!-- CUSTOMIZE: add a real one-line description of what HFD-FULL does. -->
+            Add a short description of what this project does and the problem it solves.
+          </p>
+          <ul class="tag-row mono" aria-label="Technologies">
+            <li class="tag-placeholder">Add tech stack</li>
+          </ul>
+          <a class="card-link mono" href="https://github.com/mahedi-H-hasan/HFD-FULL">View on GitHub →</a>
+        </li>
+
+        <li class="card-index project-card" data-tilt="-1">
+          <p class="card-pin" aria-hidden="true"></p>
+          <h3><a href="https://github.com/mahedi-H-hasan/RMEDU">RMEDU</a></h3>
+          <p class="placeholder-copy">
+            <!-- CUSTOMIZE: add a real one-line description of what RMEDU does. -->
+            Add a short description of what this project does and the problem it solves.
+          </p>
+          <ul class="tag-row mono" aria-label="Technologies">
+            <li class="tag-placeholder">Add tech stack</li>
+          </ul>
+          <a class="card-link mono" href="https://github.com/mahedi-H-hasan/RMEDU">View on GitHub →</a>
+        </li>
+
+        <li class="card-index project-card" data-tilt="1.5">
+          <p class="card-pin" aria-hidden="true"></p>
+          <h3><a href="https://github.com/mahedi-H-hasan/Product-Re-selling-and-Donation-Management-System">Product Re-selling &amp; Donation Management System</a></h3>
+          <p class="placeholder-copy">
+            <!-- CUSTOMIZE: add a real one-line description of this project. -->
+            Add a short description of what this project does and the problem it solves.
+          </p>
+          <ul class="tag-row mono" aria-label="Technologies">
+            <li class="tag-placeholder">Add tech stack</li>
+          </ul>
+          <a class="card-link mono" href="https://github.com/mahedi-H-hasan/Product-Re-selling-and-Donation-Management-System">View on GitHub →</a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section skills" id="skills" aria-labelledby="skills-heading">
+    <div class="wrap">
+      <h2 id="skills-heading">Skills &amp; Technology</h2>
+      <p class="section-lede">
+        Confirmed from public repository activity, plus space for the rest —
+        <!-- CUSTOMIZE: replace every dashed "Add …" chip below with a real skill. -->
+        replace the dashed chips with your own stack.
+      </p>
+
+      <div class="skill-equation" role="list" aria-label="Skills">
+        <span class="chip" role="listitem">TypeScript</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip" role="listitem">JavaScript</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip" role="listitem">CSS</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip" role="listitem">Next.js</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip chip-placeholder" role="listitem">Add language</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip chip-placeholder" role="listitem">Add framework</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip chip-placeholder" role="listitem">Add database</span>
+        <span class="eq-sign" aria-hidden="true">+</span>
+        <span class="chip chip-placeholder" role="listitem">Add tool</span>
+        <span class="eq-sign" aria-hidden="true">=</span>
+        <span class="chip chip-result" role="listitem">Building &amp; Teaching</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact" aria-labelledby="contact-heading">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="contact-heading">Office Hours</h2>
+        <p class="section-lede">
+          Open for teaching collaborations, software projects, and a good technical
+          conversation. Reach out any time.
+        </p>
+        <a class="btn btn-primary" href="mailto:mahedi.cse@iubat.edu">Email mahedi.cse@iubat.edu</a>
+      </div>
+
+      <ul class="sign-up-sheet mono">
+        <li><span class="sheet-label">Email</span><a href="mailto:mahedi.cse@iubat.edu">mahedi.cse@iubat.edu</a></li>
+        <li><span class="sheet-label">GitHub</span><a href="https://github.com/mahedi-H-hasan">github.com/mahedi-H-hasan</a></li>
+        <li><span class="sheet-label">Website</span><a href="https://cse.iubat.edu/mahedi-hasan/">cse.iubat.edu/mahedi-hasan</a></li>
+        <li><span class="sheet-label">Location</span><span>Uttara, Dhaka‑1230, Bangladesh</span></li>
+      </ul>
+      <!-- CUSTOMIZE: add more rows above for LinkedIn / X / a resume link once you
+           have the URLs — none were found on the public GitHub profile. -->
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year"></span> Mahedi Hasan. Built with plain HTML, CSS &amp; JS.</p>
+    <a class="back-to-top" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
