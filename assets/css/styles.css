@@ -602,6 +602,57 @@ p { margin: 0 0 1em; }
 .contact-list a { color: var(--navy-deep); text-decoration: none; }
 .contact-list a:hover { color: var(--bronze-deep); text-decoration: underline; }
 
+/* ---------- Curriculum vitae ---------- */
+.cv-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.cv-heading p { margin: 0; color: var(--ink-muted); }
+.cv-contact {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  font-size: 0.78rem;
+}
+.cv-content { padding-block: 2.5rem 4rem; }
+.cv-section {
+  padding-block: 1.6rem;
+  border-bottom: 1px solid var(--line);
+}
+.cv-section h2 { font-size: 1.45rem; margin-bottom: 0.75rem; }
+.cv-section p:last-child { margin-bottom: 0; }
+.cv-entry p + p { margin-top: 0.4rem; }
+.cv-date {
+  float: right;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.cv-list, .cv-publications { padding-left: 1.3rem; }
+.cv-list li, .cv-publications li { margin-bottom: 0.55rem; }
+.cv-source { margin-top: 1.5rem; color: var(--ink-muted); font-size: 0.88rem; }
+
+@media (max-width: 640px) {
+  .cv-heading { align-items: flex-start; flex-direction: column; }
+  .cv-date { float: none; display: block; }
+}
+
+@media print {
+  body { background: #fff; color: #111; font-size: 10pt; line-height: 1.4; }
+  .site-header, .site-footer, .skip-link, .cv-print { display: none !important; }
+  .page-intro { background: #fff; padding-block: 0.25in; border-bottom: 1px solid #999; }
+  .wrap { max-width: none; padding-inline: 0; }
+  .cv-content { padding-block: 0.15in; }
+  .cv-section { padding-block: 0.12in; break-inside: avoid; }
+  .cv-section h2 { font-size: 13pt; }
+  a { color: inherit; text-decoration: none; }
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--line);

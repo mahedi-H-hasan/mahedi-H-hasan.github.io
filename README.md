@@ -20,6 +20,7 @@ teaching.html           Courses taught, course development, thesis supervision
 publications.html       Journal articles, conference papers, book chapters
 projects.html           Selected public GitHub repositories
 skills.html             Programming, ML, web, and tooling skills
+cv.html                 Academic CV; print or save as PDF from the browser
 contact.html            Email, phone, and academic profile links
 assets/css/styles.css   All styles (design tokens as CSS custom properties at the top)
 assets/js/main.js       Mobile nav toggle, current-page highlighting, scroll-reveal, footer year
@@ -42,6 +43,8 @@ python -m http.server 8000
 
 Every page is a standalone file, so you can preview any of them directly
 (e.g. `http://localhost:8000/publications.html`).
+On `cv.html`, select **Print / Save as PDF** and choose **Save as PDF** in the
+browser print dialog to download a portable copy.
 
 ## Publishing to GitHub Pages
 
@@ -83,6 +86,10 @@ page. Search for `CUSTOMIZE` comments in each file for exact spots. By page:
 - **`skills.html`** — grouped skill tags (Programming & Databases, AI/ML,
   Web Technologies, Tools & Authoring). Add or remove `<li>` tags per
   group as your stack changes.
+- **`cv.html`** — the concise, printable academic CV. It is assembled from
+  the confirmed information on the site; update it when your role,
+  education, publications, awards, or skills change. The button opens the
+  browser's print dialog, where you can save a PDF.
 - **`contact.html`** — email, phone, GitHub, LinkedIn, ORCID, Scholar,
   website, and location are all sourced from the author's CV/public
   profile. Update `.contact-list` rows directly.
@@ -91,7 +98,7 @@ page. Search for `CUSTOMIZE` comments in each file for exact spots. By page:
   in `assets/img/` if you'd rather not depend on that URL.
 - **Navigation** — every page repeats the same `<nav class="primary-nav">`
   markup with a `data-page` attribute per link. If you add a new page,
-  add a matching link (with `data-page`) to the nav in **all seven**
+  add a matching link (with `data-page`) to the nav in **all eight**
   existing files, and set `<body data-page="...">` on the new page so
   `assets/js/main.js` highlights it as current.
 
