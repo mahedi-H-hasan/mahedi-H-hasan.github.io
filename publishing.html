@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publishing from a Branch — Mahedi Hasan</title>
+<meta name="description" content="How to preview changes on a topic branch and, when needed, manually deploy that branch to the live GitHub Pages site via the Deploy to GitHub Pages Actions workflow.">
+<meta name="theme-color" content="#f7f5f0">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://mahedi-H-hasan.github.io/publishing.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&amp;family=Public+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="publishing">
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Mahedi Hasan — home">MH</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="about.html" data-page="about">About</a>
+      <a href="teaching.html" data-page="teaching">Teaching</a>
+      <a href="publications.html" data-page="publications">Publications</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="skills.html" data-page="skills">Skills</a>
+      <a href="cv.html" data-page="cv">CV</a>
+      <a href="contact.html" data-page="contact">Contact</a>
+      <a href="publishing.html" data-page="publishing">Publishing</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-intro">
+    <div class="wrap">
+      <p class="eyebrow mono">Publishing</p>
+      <h1>Publishing from a Branch Other Than Main</h1>
+      <p>
+        A working reference for editing this site on a topic branch, testing
+        it locally, and — only when actually needed — manually deploying
+        that branch to the live GitHub Pages URL instead of waiting for a
+        merge to <code>main</code>.
+      </p>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="normal-heading">
+    <div class="wrap">
+      <p class="section-lede">
+        Normal changes don't need any of this. Push to <code>main</code> and
+        the <code>Deploy to GitHub Pages</code> workflow
+        (<code>.github/workflows/deploy-pages.yml</code>) publishes
+        automatically. The steps below are for the times you want to write
+        and test on a separate branch first, or deploy a branch on demand
+        without merging it.
+      </p>
+
+      <div class="panel">
+        <h2 id="normal-heading">1. Create and push a topic branch</h2>
+        <ol class="steps">
+          <li>
+            <h3>Branch from an up-to-date main</h3>
+            <p>Make sure your local <code>main</code> has the latest commits before branching, so the workflow file and site content you start from match production.</p>
+            <pre><code>git checkout main
+git pull origin main
+git checkout -b my-topic-branch</code></pre>
+          </li>
+          <li>
+            <h3>Edit, commit, and push</h3>
+            <p>Work normally — edit the HTML/CSS/JS files, commit, and push the branch to GitHub.</p>
+            <pre><code>git add .
+git commit -m "Describe the change"
+git push -u origin my-topic-branch</code></pre>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="preview-heading">
+    <div class="wrap">
+      <div class="panel">
+        <h2 id="preview-heading">2. Preview and test before deploying anything</h2>
+        <p>
+          This is a static site with no build step, so the most reliable way
+          to review a branch is to serve it locally exactly as described in
+          the project <a href="https://github.com/mahedi-H-hasan/mahedi-H-hasan.github.io#editing-locally">README</a>:
+        </p>
+        <pre><code>git checkout my-topic-branch
+npx serve .
+# or
+python -m http.server 8000</code></pre>
+        <p>
+          Then open every page you touched (each is a standalone HTML file,
+          e.g. <code>http://localhost:8000/publications.html</code>) and
+          check the mobile nav toggle, current-page nav highlighting, and
+          any content you changed.
+        </p>
+        <div class="callout">
+          <span class="callout-label">Caveat</span>
+          <p>
+            GitHub Pages itself has no separate "preview" environment or
+            per-branch preview URLs for this repository — there is exactly
+            one live Pages site, served from whatever was last deployed by
+            the Actions workflow. A pull request opened for the branch does
+            not get its own deployed URL. Local serving is the safe way to
+            review a branch before anyone deploys it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="deploy-heading">
+    <div class="wrap">
+      <div class="panel">
+        <h2 id="deploy-heading">3. Manually deploy a chosen branch (when actually needed)</h2>
+        <p>
+          The <code>Deploy to GitHub Pages</code> workflow already listens
+          for <code>workflow_dispatch</code>, GitHub's manual "Run workflow"
+          trigger, alongside its normal push-to-<code>main</code> trigger.
+          That lets you run it by hand against any branch that has the
+          workflow file — without touching Pages settings.
+        </p>
+        <ol class="steps">
+          <li>
+            <h3>Make sure the branch has the workflow file</h3>
+            <p>
+              <code>workflow_dispatch</code> only offers a branch in the "Use
+              workflow from" list if that branch contains
+              <code>.github/workflows/deploy-pages.yml</code>. Branching from
+              an up-to-date <code>main</code> (step 1) already satisfies
+              this, since the workflow file lives in this repo's history.
+            </p>
+          </li>
+          <li>
+            <h3>Open Actions → Deploy to GitHub Pages</h3>
+            <p>
+              In the GitHub repository, go to the <strong>Actions</strong>
+              tab and select the <strong>Deploy to GitHub Pages</strong>
+              workflow in the left sidebar.
+            </p>
+          </li>
+          <li>
+            <h3>Run workflow → choose the branch</h3>
+            <p>
+              Click <strong>Run workflow</strong>. In the dropdown, use
+              <strong>Use workflow from</strong> to pick the branch you want
+              to deploy (for example <code>my-topic-branch</code>), then
+              type that exact branch name into the confirmation field the
+              workflow asks for.
+            </p>
+          </li>
+          <li>
+            <h3>Confirm and run</h3>
+            <p>
+              Submit the run. The job checks that your typed confirmation
+              matches the branch the run actually started from, then builds
+              and deploys that branch's current files.
+            </p>
+          </li>
+        </ol>
+
+        <div class="callout callout-danger">
+          <span class="callout-label">Important</span>
+          <p>
+            This deploys straight to the same public production URL
+            (<a href="https://mahedi-h-hasan.github.io">mahedi-h-hasan.github.io</a>)
+            that everyone already sees — it is <strong>not</strong> a private
+            preview. Whatever is in the chosen branch replaces the live site
+            the moment the run finishes, and it can overwrite content that
+            was previously deployed from <code>main</code> until someone
+            deploys <code>main</code> again.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="restore-heading">
+    <div class="wrap">
+      <div class="panel">
+        <h2 id="restore-heading">4. Restore production</h2>
+        <p>
+          If a manual deployment needs to be reverted, run the same workflow
+          again — <strong>Actions → Deploy to GitHub Pages → Run workflow</strong>
+          — but this time pick <code>main</code> in <strong>Use workflow
+          from</strong> and type <code>main</code> in the confirmation field.
+          That redeploys whatever is currently on <code>main</code>, putting
+          the live site back to its normal, push-driven state.
+        </p>
+        <p>
+          No change to <strong>Settings → Pages</strong> is required for any
+          of this — the source stays set to <strong>GitHub Actions</strong>
+          throughout, and every push to <code>main</code> continues to
+          deploy automatically exactly as before.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year"></span> Mahedi Hasan. Built with plain HTML, CSS &amp; JS.</p>
+    <a class="back-to-top" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

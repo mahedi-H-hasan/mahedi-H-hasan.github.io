@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      confirm_branch:
+        description: >-
+          Type the exact branch name you selected above in "Use workflow
+          from". This deploys that branch's current contents straight to the
+          live public Pages URL, replacing whatever is published now
+          (including main). The job fails if this doesn't match.
+        required: true
 
 permissions:
   contents: read
@@ -21,6 +29,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Confirm target branch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ "${{ inputs.confirm_branch }}" != "${{ github.ref_name }}" ]; then
+            echo "::error::Typed branch '${{ inputs.confirm_branch }}' does not match the branch this run was started from ('${{ github.ref_name }}'). Re-run the workflow, pick the branch you intend to deploy in 'Use workflow from', and type that same branch name to confirm."
+            exit 1
+          fi
+          echo "Confirmed: deploying branch '${{ github.ref_name }}' to the live Pages URL."
+
       - name: Checkout
         uses: actions/checkout@v4
 
