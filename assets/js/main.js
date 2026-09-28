@@ -27,13 +27,23 @@
     });
   }
 
+  // Highlight the current page in the primary nav (works for direct
+  // file:// preview too, since it matches on data-page, not pathname).
+  var currentPage = document.body.getAttribute("data-page");
+  if (currentPage) {
+    document.querySelectorAll('.primary-nav a[data-page="' + currentPage + '"]').forEach(function (link) {
+      link.classList.add("is-current");
+      link.setAttribute("aria-current", "page");
+    });
+  }
+
   // One orchestrated reveal-on-scroll moment for section content.
   var prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
   var revealTargets = document.querySelectorAll(
-    ".section .about-card, .section .about-portrait, .project-card, .skill-equation, .contact-grid > *"
+    ".section .panel, .project-card, .pub-group, .skill-group, .contact-panel"
   );
 
   revealTargets.forEach(function (el) {
