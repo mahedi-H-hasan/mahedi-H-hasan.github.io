@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MH monogram">
+  <rect width="64" height="64" rx="10" fill="#16302a"/>
+  <path d="M14 46 V18 h4 l10 16 10-16 h4 v28 h-5 V27 l-9 14-9-14 v19 z" fill="#f5f3ea"/>
+  <path d="M9 51 q7 4 46 0" fill="none" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
