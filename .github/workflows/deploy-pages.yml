@@ -1,9 +1,14 @@
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
+    inputs:
+      branch_confirmation:
+        description: "Type the exact branch name you selected above to confirm deploying it to the live site."
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -18,6 +23,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Confirm deployment branch
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          CONFIRM_BRANCH: ${{ inputs.branch_confirmation }}
+        run: |
+          if [ "$CONFIRM_BRANCH" != "$GITHUB_REF_NAME" ]; then
+            echo "Confirmation must match the selected branch ($GITHUB_REF_NAME)." >&2
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v5
 

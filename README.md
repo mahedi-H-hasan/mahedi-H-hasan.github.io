@@ -53,9 +53,9 @@ browser print dialog to download a portable copy.
    the `main` branch.
 2. In the repo, go to **Settings → Pages** and set **Source** to
    **GitHub Actions** (the included workflow handles the rest).
-3. Every push to `main` runs `.github/workflows/deploy-pages.yml`, which
-   builds nothing (there's nothing to build) and deploys the repo root
-   straight to Pages.
+3. Every push to `main` runs the **Deploy to GitHub Pages** workflow in
+   `.github/workflows/deploy-pages.yml`, which prepares the site with Jekyll
+   and deploys it to Pages.
 
 ### Deploying a different branch manually
 
@@ -68,7 +68,7 @@ exact Actions steps). In short:
 1. Branch from an up-to-date `main` so the branch has the workflow file.
 2. Push it, then in GitHub go to **Actions → Deploy to GitHub Pages → Run
    workflow**, pick the branch under **Use workflow from**, and type that
-   same branch name into the confirmation field the workflow asks for.
+   same branch name into the required `branch_confirmation` field.
 3. This deploys straight to the live public Pages URL — it is **not** a
    private preview, and it can overwrite whatever `main` last published.
 4. To restore production, run the workflow again with **Use workflow
